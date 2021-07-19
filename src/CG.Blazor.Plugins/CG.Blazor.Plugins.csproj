@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup> 
+    <TargetFramework>net6.0</TargetFramework>
+	<GenerateEmbeddedFilesManifest>false</GenerateEmbeddedFilesManifest>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0-preview.6.21352.12" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0-preview.6.21355.2" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.220">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CG.Configuration\CG.Configuration.csproj" />
+	  <ProjectReference Include="..\CG.DataProtection\CG.DataProtection.csproj" />
+	  <ProjectReference Include="..\CG.Runtime\CG.Runtime.csproj" />
+	</ItemGroup>
+
+</Project>
