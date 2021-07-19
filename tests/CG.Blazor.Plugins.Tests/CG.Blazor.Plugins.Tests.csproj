@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>CG.Blazor</RootNamespace>
+    <RootNamespace>CG.Blazor.Plugins</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,10 +20,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\CG.Blazor\CG.Blazor.csproj" />
   </ItemGroup>
 
 </Project>
