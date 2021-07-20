@@ -381,7 +381,9 @@ namespace Microsoft.AspNetCore.Builder
                     }
 
                     // Check for relative paths.
-                    if (false == Path.IsPathRooted(module.AssemblyNameOrPath))
+                    if (false == Path.IsPathRooted(
+                        module.AssemblyNameOrPath
+                        ))
                     {
                         // Expand the path (the load expects a rooted path).
                         var completePath = Path.GetFullPath(
@@ -420,9 +422,8 @@ namespace Microsoft.AspNetCore.Builder
                         );
                 }
 
-                // At this point we have a reference to the loaded assembly, so we
-                //   can use that to try to find an embedded resource manifest, for
-                //   that assembly (may not be there).
+                // At this point we have a reference to the loaded assembly so we
+                //   can use that to try to find an embedded resource manifest.
 
                 try
                 {

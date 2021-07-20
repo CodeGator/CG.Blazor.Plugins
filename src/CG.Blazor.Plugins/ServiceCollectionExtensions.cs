@@ -201,7 +201,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     module
                     );
 
-                // Is there a module?
+                // Was an entry point specifically configured?
                 if (false == string.IsNullOrEmpty(module.EntryPoint))
                 {
                     // Try to load the module's type.
@@ -255,6 +255,59 @@ namespace Microsoft.Extensions.DependencyInjection
                                 $"See inner exceptions for more detail.",
                             innerException: ex
                             );
+                    }
+                }
+                else
+                {
+                    // If we get here then no entry point was explicitly configured, for
+                    //   this plugin. So, we'll follow our convention now and look for a
+                    //   public class in the root namespace (plugin's root), named 'Module'.
+                    // If we find such a module we'll try to use it here.
+
+                    // Try to load the module's type.
+                    var type = asm.GetType(
+                        $"{asm.GetName().Name}.Module"
+                        );
+
+                    // Did we find one?
+                    if (null != type)
+                    {
+                        try
+                        {
+                            // Try to create an instance of the module.
+                            if (Activator.CreateInstance(
+                                (Type)(type ?? Type.Missing) // Make the compiler happy re: possible null reference.
+                                ) is IModule moduleObj)
+                            {
+                                // Filter down to the section for this module. This way, each module
+                                //   can add whatever it needs, to this section, for configuration,
+                                //   and the whole thing will just work.
+                                var moduleSection = configuration.GetSection(
+                                    $"Modules:{index}"
+                                    );
+
+                                // Register any services in the module.
+                                moduleObj.ConfigureServices(
+                                    serviceCollection,
+                                    moduleSection
+                                    );
+
+                                // Since we've gone to all the trouble to create this module, and we
+                                //    know we'll need it again, as part of the whole startup operation,
+                                //    let's go ahead and cache it now, so we don't have to re-create it,
+                                //    next time we need it.
+                                BlazorResources.Modules.Add(moduleObj);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Provide more context for the error.
+                            throw new BlazorPluginException(
+                                message: $"Failed to create a '{module.EntryPoint}' module instance. " +
+                                    $"See inner exceptions for more detail.",
+                                innerException: ex
+                                );
+                        }
                     }
                 }
             }
