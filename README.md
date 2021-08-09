@@ -38,6 +38,67 @@ We also blog about projects like this one on our website, [HERE](http://www.code
 
 ---
 
+#### How do I get started?
+
+There is a working quick start sample [HERE](https://github.com/CodeGator/CG.Blazor.Plugins/tree/main/samples)
+
+Steps to add plugins to a Blazor project:
+
+1. Create a Blazor project to suit your taste.
+
+2. Add the CG.Blazor.Plugins NUGET package to the project.
+
+3. Add the `@using CG.Blazor.Plugins` statement to the _Imports.razor file.
+
+4. Add the line: `services.AddBlazorPlugins(Configuration.GetSection("Plugins"));` to the `ConfigureServices` method of the `Startup` class.
+
+5. Add the line: `app.UseBlazorPlugins(env);` to the `Configure` method of the `Startup` class.
+
+6. Add the following to your appsettings.json file:
+
+```
+{
+  "Plugins": {
+    "Modules": [
+      {
+        "AssemblyNameOrPath": "YourPlugin",
+        "Routed": true // <- true if you have pages that need routing support.
+      }
+    ]
+  }
+}
+```
+
+Where you will, of course, use the name of your plugin assembly in place of `YourPlugin`
+
+7. Edit the App.razor file like so:
+
+```
+<Router AppAssembly="@typeof(Program).Assembly" 
+        PreferExactMatches="@true"
+        AdditionalAssemblies=@BlazorResources.RoutedAssemblies> // <-- this line
+    // code removed for clarity.
+</Router>
+```
+
+The indicated line should be added, so the framework will route properly for the plugins.
+
+8. Edit the _Host.cshtml file like so:
+
+8A. Add the `@using CG.Blazor.Plugins` statement near the top of the file.
+
+8B. Add the `@(Html.Raw(BlazorResources.RenderStyleSheetLinks()))` statement at the bottom of the `head` tag
+
+8C. Add the `@(Html.Raw(BlazorResources.RenderScriptTags()))` statement at the bottom of the `body` tag.
+
+9. Create your plugin project and add a reference to that project to your Blazor project.
+
+That's it! Of course, you could get fancier with things, if you like. But, this is enough to get started.
+
+
+
+
+
 
 
 
