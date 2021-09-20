@@ -23,11 +23,11 @@ Platforms supported:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CG.DataProtection" Version="2021.2.1" />
-    <PackageReference Include="CG.Runtime" Version="2021.3.1" />
+    <PackageReference Include="CG.DataProtection" Version="2021.2.3" />
+    <PackageReference Include="CG.Runtime" Version="2021.3.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.8" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.220">
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.10" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.231">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
