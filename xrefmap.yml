@@ -230,6 +230,19 @@ references:
   isSpec: "True"
   fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.EntryPoint
   nameWithType: BlazorModuleOptions.EntryPoint
+- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
+  name: IsEnabled
+  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsEnabled
+  commentId: P:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
+  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
+  nameWithType: BlazorModuleOptions.IsEnabled
+- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled*
+  name: IsEnabled
+  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsEnabled_
+  commentId: Overload:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
+  isSpec: "True"
+  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
+  nameWithType: BlazorModuleOptions.IsEnabled
 - uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed
   name: Routed
   href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_Routed
