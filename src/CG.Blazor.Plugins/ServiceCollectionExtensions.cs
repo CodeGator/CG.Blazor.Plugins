@@ -120,9 +120,12 @@ namespace Microsoft.Extensions.DependencyInjection
             var asmNameSet = new HashSet<string>();
             var loader = new AssemblyLoader();
 
+            // Get the list of current enabled plugin modules.
+            var modules = pluginOptions.Modules.Where(x => x.IsEnabled);
+
             // Loop through the modules.
             var index = -1;
-            foreach (var module in pluginOptions.Modules)
+            foreach (var module in modules)
             {
                 index++; // Used for extracting configuration sections.
 

@@ -16,6 +16,11 @@ namespace CG.Blazor.Plugins.Options
         #region Properties
 
         /// <summary>
+        /// This property indicates whether the plugin is enabled for loading, or not.
+        /// </summary>
+        public bool IsEnabled { get; set; }
+
+        /// <summary>
         /// This property contains an optional assembly name, or path, for the 
         /// Blazor plugin assembly that corresponds to the plugin.
         /// </summary>
@@ -60,6 +65,7 @@ namespace CG.Blazor.Plugins.Options
         public BlazorModuleOptions()
         {
             // Make the compiler happy with default values.
+            IsEnabled = true;
             AssemblyNameOrPath = "";
             Routed = false;
             StyleSheets = new List<string>();
