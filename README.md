@@ -94,6 +94,9 @@ The indicated line should be added, so the framework will route properly for the
 9. Create your plugin project and add a reference to that project to your Blazor project.
 
 That's it! Of course, you could get fancier with things, if you like. But, this is enough to get started.
+---
+#### Disclaimer
+This package and it's contents are experimental in nature. There is no official support. Use at your own risk.
 
 
 
