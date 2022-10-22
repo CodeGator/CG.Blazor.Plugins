@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.BlazorPluginException.html",
-          "hash": "STlgnV7TsL90AyfyjI1WVpYTwGp3pKTzeZA0wgulXD8="
+          "hash": "Q4iNZZcUSIw2qOFXLXxLF+s1/NqxhcSuMrJoDYTIT7g="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.BlazorResources.html",
-          "hash": "AmOIdZwCal+oSkVTa8YmYudsP3PhY78FVqbvY4nKMKk="
+          "hash": "YdgaASBKZXu+HSAwSypDv1/nacqXvHbtN++SPTSzXAg="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.IModule.html",
-          "hash": "wxnCnX12S1Q2WN3Ui156m3M3z3wpEU2ii6FD5BAyj4s="
+          "hash": "pSzXY+mxoogLfztnPhlRUIsJis00mUId9PwbqKOkdgc="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.ModuleBase.html",
-          "hash": "dVGDEAngy3xp72srkKJdrOIto9h1ysE6UznYkNvPArQ="
+          "hash": "5D0tsiPQCsxUM83sZxky6caAQFUFZjEf4qYJhmc/B2M="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html",
-          "hash": "jiJ9T8Ooh+LEb0qPiiel5j/hyD3cXvTNzBqYI20xlcc="
+          "hash": "BV4vA/P/pkKlUz6j4lGSC82MBZdsSdmHHtDhrshIJUU="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.Options.BlazorPluginsOptions.html",
-          "hash": "0IzvcqQ1ZnLu+AKlPVQSbrisM0vRY9OMeDAiQ/4DV64="
+          "hash": "rFdhyPi4bdm4Otwzg5/54luRQcMm/ejDyFXh1Yr9Q/0="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.Options.html",
-          "hash": "0Yxxuaf2v1K5jb9c+TeKfyxjPqJtWK8kXBopUShGNwQ="
+          "hash": "WbnSXTeSNwXvDT3L/XvUWOfobqS3K4pSMompjB5uaMo="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.html",
-          "hash": "bR1Z7RoytOHqqlDEhXXu71a8AHk9ImoQERVvZpF3c20="
+          "hash": "lhc5nzkB0Aj4wryrkl33oiynejDNW33p3cCwoggz0to="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.html",
-          "hash": "k6clltKzt6qarJgnp1RL80kvsAzYPUkKWx2QXomXJfQ="
+          "hash": "6tjpo0BDJP0Oh3zQD12z+SVnChbF+DR9nxgEC/f805Y="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.AspNetCore.Builder.html",
-          "hash": "M9dNdPvaS1HZ2R4p9nkdnM6Tegs+x/OVQgE4dzhb0/k="
+          "hash": "kTUDEPWHm8wQKwAbRgbu7/v2dzh39tZlHtB3rDN2yDA="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
-          "hash": "4XLa8la4yK+CbjAkTXCI0qlHyjMO+A2kxq27rALFxGg="
+          "hash": "xsMgGxPfRDrs4j+/Pd7LbnCvd3NvsArstcaBRXeqc1k="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.html",
-          "hash": "2FtFmzXLd+lzPiKXQjFof0WZvn89jEzmbmzq/nfvlc0="
+          "hash": "ftqX57N9/HQJeAUCrhybvUAWuMi+eBnTEt5t9XGKBX4="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "WeCZp0JRUGNn7i3AfmkrjRKHVdx2cyDSPHqon083ntg="
+          "hash": "GSM6/qjA0Y6/lyPTFQFyqzR0RP/48E3IDhzCnmbB9WQ="
         }
       },
       "is_incremental": false,
@@ -242,7 +242,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "iWQKTHFIkk+m1vQn9sASPuuwt5ee4JUikEHzYglRNgI="
+          "hash": "UCH2YaAuLIC3DJnZnlFxWSfzgkV+xaATKLsiSxI+8uQ="
         }
       },
       "is_incremental": false,
