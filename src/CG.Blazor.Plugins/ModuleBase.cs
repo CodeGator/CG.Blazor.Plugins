@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-
+﻿
 namespace CG.Blazor.Plugins
 {
     /// <summary>
@@ -19,14 +14,13 @@ namespace CG.Blazor.Plugins
 
         /// <inheritdoc />
         public abstract void ConfigureServices(
-            IServiceCollection serviceCollection,
+            WebApplicationBuilder webApplicationBuilder,
             IConfiguration configuration
             );
 
         /// <inheritdoc />
         public abstract void Configure(
-            IApplicationBuilder app,
-            IWebHostEnvironment env
+            WebApplication webApplication
             );
 
         #endregion
