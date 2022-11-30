@@ -351,12 +351,15 @@ references:
   commentId: T:Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions
   fullName: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions
   nameWithType: WebApplicationBuilderExtensions
-- uid: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder,System.String)
-  name: AddBlazorPlugins(WebApplicationBuilder, String)
-  href: api/Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.html#Microsoft_Extensions_DependencyInjection_WebApplicationBuilderExtensions_AddBlazorPlugins_WebApplicationBuilder_System_String_
-  commentId: M:Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder,System.String)
-  fullName: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder, System.String)
-  nameWithType: WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder, String)
+- uid: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder,System.String,System.Nullable{ILogger})
+  name: AddBlazorPlugins(WebApplicationBuilder, String, Nullable<ILogger>)
+  href: api/Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.html#Microsoft_Extensions_DependencyInjection_WebApplicationBuilderExtensions_AddBlazorPlugins_WebApplicationBuilder_System_String_System_Nullable_ILogger__
+  commentId: M:Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder,System.String,System.Nullable{ILogger})
+  name.vb: AddBlazorPlugins(WebApplicationBuilder, String, Nullable(Of ILogger))
+  fullName: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder, System.String, System.Nullable<ILogger>)
+  fullName.vb: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder, System.String, System.Nullable(Of ILogger))
+  nameWithType: WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder, String, Nullable<ILogger>)
+  nameWithType.vb: WebApplicationBuilderExtensions.AddBlazorPlugins(WebApplicationBuilder, String, Nullable(Of ILogger))
 - uid: Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.AddBlazorPlugins*
   name: AddBlazorPlugins
   href: api/Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.html#Microsoft_Extensions_DependencyInjection_WebApplicationBuilderExtensions_AddBlazorPlugins_
