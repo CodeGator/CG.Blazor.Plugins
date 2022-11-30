@@ -19,6 +19,8 @@ public static class WebApplicationBuilderExtensions
     /// use for the operation.</param>
     /// <param name="configurationSection">The default configuration section
     /// to read options from. </param>
+    /// <param name="bootstrapLogger">An optional bootstrap logger to use
+    /// for the operation.</param>
     /// <returns>The value of the <paramref name="webApplicationBuilder"/>
     /// parameter, for chaining calls together, Fluent style.</returns>
     /// <exception cref="ArgumentException">This exception is thrown whenever
@@ -27,18 +29,35 @@ public static class WebApplicationBuilderExtensions
     /// whenever the operation fails.</exception>
     public static WebApplicationBuilder AddBlazorPlugins(
         this WebApplicationBuilder webApplicationBuilder,
-        string configurationSection = "Plugins"
+        string configurationSection = "Plugins",
+        ILogger? bootstrapLogger = null
         )
     {
         // Validate the parameters before attempting to use them.
         Guard.Instance().ThrowIfNull(webApplicationBuilder, nameof(webApplicationBuilder));
 
+        // Log what we are about to do.
+        bootstrapLogger?.LogDebug(
+            "Clearing any existing Blazor plugin resources."
+            );
+
         // Clear any old blazor resources.
         BlazorResources.Clear();
+
+        // Log what we are about to do.
+        bootstrapLogger?.LogDebug(
+            "Fetching the configuration section: {section}",
+            configurationSection
+            );
 
         // Get the configuration section.
         var section = webApplicationBuilder.Configuration.GetSection(
             configurationSection
+            );
+
+        // Log what we are about to do.
+        bootstrapLogger?.LogDebug(
+            "Configuring the plugin options"
             );
 
         // Configure the plugin options.
@@ -47,16 +66,33 @@ public static class WebApplicationBuilderExtensions
             out var pluginOptions
             );
 
-        var asmNameSet = new HashSet<string>();
+        // Log what we are about to do.
+        bootstrapLogger?.LogDebug(
+            "Getting the list of modules"
+            );
 
         // Get the list of current enabled plugin modules.
-        var modules = pluginOptions.Modules.Where(x => x.IsEnabled);
+        var modules = pluginOptions.Modules.Where(x => 
+            x.IsEnabled
+            );
+
+        // Log what we are about to do.
+        bootstrapLogger?.LogDebug(
+            "Looping through {count} enabled plugin modules",
+            modules.Count()
+            );
 
         // Loop through the modules.
         var index = -1;
+        var asmNameSet = new HashSet<string>();
         foreach (var module in modules)
         {
             index++; // Used for extracting configuration sections.
+
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Deciding whether the assembly name is a path, or not."
+                );
 
             Assembly? asm = null;
 
@@ -64,12 +100,28 @@ public static class WebApplicationBuilderExtensions
             //   property contains a path and treat it as such.
             if (module.AssemblyNameOrPath.EndsWith(".dll"))
             {
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Deciding whether the assembly path is rooted, or not."
+                    );
+
                 // Check for relative paths.
                 if (false == Path.IsPathRooted(module.AssemblyNameOrPath))
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Building a complete path to a plugin assembly."
+                        );
+
                     // Expand the path (the load expects a rooted path).
                     var completePath = Path.GetFullPath(
                         module.AssemblyNameOrPath
+                        );
+
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Loading assembly by path: {path}",
+                        completePath
                         );
 
                     // Load the assembly from the path.
@@ -81,6 +133,12 @@ public static class WebApplicationBuilderExtensions
                 {
                     try
                     {
+                        // Log what we are about to do.
+                        bootstrapLogger?.LogDebug(
+                            "Loading assembly by name: {name}",
+                            module.AssemblyNameOrPath
+                            );
+
                         // Load the assembly from the path.
                         asm = Assembly.Load(
                             new AssemblyName(module.AssemblyNameOrPath)
@@ -93,8 +151,8 @@ public static class WebApplicationBuilderExtensions
                             innerException: ex,
                             message: "When loading from an assembly name, remember that the " +
                             "assembly itself must have been loaded through a project reference. " +
-                            "To dynamically load a plugin, use a path to the assembly, instead " +
-                            "of a name."
+                            "To dynamically load a plugin assembly, use a path to the assembly, " +
+                            "instead of a name."
                             );
                     }
                 }
@@ -103,6 +161,12 @@ public static class WebApplicationBuilderExtensions
             {
                 try
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Loading assembly by name: {name}",
+                        module.AssemblyNameOrPath
+                        );
+
                     // Load the assembly by name.
                     asm = Assembly.Load(
                         new AssemblyName(module.AssemblyNameOrPath)
@@ -115,11 +179,16 @@ public static class WebApplicationBuilderExtensions
                         innerException: ex,
                         message: "When loading from an assembly name, remember that the " +
                         "assembly itself must have been loaded through a project reference. " +
-                        "To dynamically load a plugin, use a path to the assembly, instead " +
-                        "of a name."
+                        "To dynamically load a plugin assembly, use a path to the assembly, " +
+                        "instead of a name."
                         );
                 }
             }
+
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Fetching the assembly name from a plugin"
+                );
 
             // Create a safe name for the assembly.
             var safeAsmName = asm.GetName().Name;
@@ -133,32 +202,60 @@ public static class WebApplicationBuilderExtensions
             // Does the module require Blazor routing support?
             if (module.Routed)
             {
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Marking the assembly for routing support"
+                    );
+
                 // Remember the assembly on behalf of Blazor.
                 BlazorResources.RoutedAssemblies.Add(
                     asm
                     );
             }
 
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Fetching the static resources (if any) from the assembly"
+                );
+
             // Get the static resources from the assembly.
             var staticResourceNames = asm.GetManifestResourceNames();
+
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Building links to style sheets."
+                );
 
             // Add links for any embedded style sheets.
             BuildStyleSheetLinks(
                 asm,
                 staticResourceNames,
-                module
+                module,
+                bootstrapLogger
+                );
+
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Building links to scripts."
                 );
 
             // Add tags for any embedded scripts.
             BuildScriptTags(
                 asm,
                 staticResourceNames,
-                module
+                module,
+                bootstrapLogger
                 );
 
             // Was an entry point specifically configured?
             if (false == string.IsNullOrEmpty(module.EntryPoint))
             {
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Resolving custom entry point: {name]",
+                    module.EntryPoint
+                    );
+
                 // Try to load the module's type.
                 var type = asm.GetType(
                     module.EntryPoint
@@ -177,11 +274,21 @@ public static class WebApplicationBuilderExtensions
 
                 try
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Creating the module for this plugin."
+                        );
+
                     // Try to create an instance of the module.
                     if (Activator.CreateInstance(
                         (Type)(type ?? Type.Missing) // Make the compiler happy re: possible null reference.
                         ) is IModule moduleObj)
                     {
+                        // Log what we are about to do.
+                        bootstrapLogger?.LogDebug(
+                            "Filtering down to the plugin's configuration section."
+                            );
+
                         // Filter down to the section for this module. This way, each module
                         //   can add whatever it needs, to this section, for configuration,
                         //   and the whole thing will just work.
@@ -189,10 +296,20 @@ public static class WebApplicationBuilderExtensions
                             $"Modules:{index}"
                             );
 
+                        // Log what we are about to do.
+                        bootstrapLogger?.LogDebug(
+                            "Configuring the plugin."
+                            );
+
                         // Register any services in the module.
                         moduleObj.ConfigureServices(
                             webApplicationBuilder,
                             moduleSection
+                            );
+
+                        // Log what we are about to do.
+                        bootstrapLogger?.LogDebug(
+                            "Adding the assembly to the cache."
                             );
 
                         // Since we've gone to all the trouble to create this module, and we
@@ -214,6 +331,12 @@ public static class WebApplicationBuilderExtensions
             }
             else
             {
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Resolving standard entry point: {name}",
+                    $"{asm.GetName().Name}.Module"
+                    );
+
                 // If we get here then no entry point was explicitly configured, for
                 //   this plugin. So, we'll follow our convention now and look for a
                 //   public class in the root namespace (plugin's root), named 'Module'.
@@ -229,11 +352,21 @@ public static class WebApplicationBuilderExtensions
                 {
                     try
                     {
+                        // Log what we are about to do.
+                        bootstrapLogger?.LogDebug(
+                            "Creating the module for this plugin."
+                            );
+
                         // Try to create an instance of the module.
                         if (Activator.CreateInstance(
                             (Type)(type ?? Type.Missing) // Make the compiler happy re: possible null reference.
                             ) is IModule moduleObj)
                         {
+                            // Log what we are about to do.
+                            bootstrapLogger?.LogDebug(
+                                "Filtering down to the plugin's configuration section."
+                                );
+
                             // Filter down to the section for this module. This way, each module
                             //   can add whatever it needs, to this section, for configuration,
                             //   and the whole thing will just work.
@@ -241,10 +374,20 @@ public static class WebApplicationBuilderExtensions
                                 $"Modules:{index}"
                                 );
 
+                            // Log what we are about to do.
+                            bootstrapLogger?.LogDebug(
+                                "Configuring the plugin."
+                                );
+
                             // Register any services in the module.
                             moduleObj.ConfigureServices(
                                 webApplicationBuilder,
                                 moduleSection
+                                );
+
+                            // Log what we are about to do.
+                            bootstrapLogger?.LogDebug(
+                                "Adding the assembly to the cache."
                                 );
 
                             // Since we've gone to all the trouble to create this module, and we
@@ -286,18 +429,32 @@ public static class WebApplicationBuilderExtensions
     /// <param name="staticResourceNames">The static resources available 
     /// in the assembly.</param>
     /// <param name="module">The options for the module.</param>
+    /// <param name="bootstrapLogger">An optional bootstrap logger to
+    /// use for the operation.</param>
     private static void BuildScriptTags(
         Assembly asm,
         string[] staticResourceNames,
-        BlazorModuleOptions module
+        BlazorModuleOptions module,
+        ILogger? bootstrapLogger
         )
     {
         // Does the module contain scripts?
         if (null != module.Scripts)
         {
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Looping through {count} scripts",
+                module.Scripts.Count()
+                );
+
             // Loop through all the scripts.
             foreach (var resource in module.Scripts)
             {
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Checking for embedded HTML in the link"
+                    );
+
                 // Check for embedded html in the path.
                 if (resource.IsHTML())
                 {
@@ -311,6 +468,11 @@ public static class WebApplicationBuilderExtensions
                 // Format a script tag and save it.
                 if (resource.StartsWith('/'))
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Validating the script link"
+                        );
+
                     // Check for the resource in the assembly.
                     if (staticResourceNames.Contains(
                         $"{asm.GetName().Name}.wwwroot.{resource[1..]}")
@@ -323,6 +485,11 @@ public static class WebApplicationBuilderExtensions
                             );
                     }
 
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Adding a script link to the resource cache"
+                        );
+
                     // Add the link.
                     BlazorResources.Scripts.Add(
                         $"<script src=\"_content/{asm.GetName().Name}{resource}\"></script>"
@@ -330,6 +497,11 @@ public static class WebApplicationBuilderExtensions
                 }
                 else
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Validating the script link"
+                        );
+
                     // Check for the resource in the assembly.
                     if (false == staticResourceNames.Contains(
                         $"{asm.GetName().Name}.wwwroot.{resource}")
@@ -341,6 +513,11 @@ public static class WebApplicationBuilderExtensions
                                 $"is not an embedded resource in assembly '{asm.GetName().Name}'!"
                             );
                     }
+
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Adding a script link to the resource cache"
+                        );
 
                     // Add the link.
                     BlazorResources.Scripts.Add(
@@ -360,18 +537,32 @@ public static class WebApplicationBuilderExtensions
     /// <param name="staticResourceNames">The static resources available 
     /// in the assembly.</param>
     /// <param name="module">The options for the module.</param>
+    /// <param name="bootstrapLogger">An optional bootstrap logger to
+    /// use for the operation.</param>
     private static void BuildStyleSheetLinks(
         Assembly asm,
         string[] staticResourceNames,
-        BlazorModuleOptions module
+        BlazorModuleOptions module,
+        ILogger? bootstrapLogger
         )
     {
         // Does the module contain stylesheets?
         if (null != module.StyleSheets)
         {
+            // Log what we are about to do.
+            bootstrapLogger?.LogDebug(
+                "Looping through {count} style sheets",
+                module.StyleSheets.Count()
+                );
+
             // Loop through all the style sheets.
             foreach (var resource in module.StyleSheets)
             {
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Checking for embedded HTML in the link"
+                    );
+
                 // Check for embedded html in the path.
                 if (resource.IsHTML())
                 {
@@ -385,6 +576,11 @@ public static class WebApplicationBuilderExtensions
                 // Format a link and save it.
                 if (resource.StartsWith('/'))
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Validating the style sheet link"
+                        );
+
                     // Check for the resource in the assembly.
                     if (staticResourceNames.Contains(
                         $"{asm.GetName().Name}.wwwroot.{resource[1..]}")
@@ -397,6 +593,11 @@ public static class WebApplicationBuilderExtensions
                             );
                     }
 
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Adding a stylesheet link to the resource cache"
+                        );
+
                     // Add the link.
                     BlazorResources.StyleSheets.Add(
                         $"<link rel=\"stylesheet\" href=\"_content/{asm.GetName().Name}{resource}\" />"
@@ -404,6 +605,11 @@ public static class WebApplicationBuilderExtensions
                 }
                 else
                 {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Validating the style sheet link"
+                        );
+
                     // Check for the resource in the assembly.
                     if (false == staticResourceNames.Contains(
                         $"{asm.GetName().Name}.wwwroot.{resource}")
@@ -415,6 +621,11 @@ public static class WebApplicationBuilderExtensions
                             $"is not an embedded resource in assembly '{asm.GetName().Name}'!"
                             );
                     }
+
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
+                        "Adding a stylesheet link to the resource cache"
+                        );
 
                     // Add the link.
                     BlazorResources.StyleSheets.Add(
