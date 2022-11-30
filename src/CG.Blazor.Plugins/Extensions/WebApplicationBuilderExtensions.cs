@@ -408,6 +408,9 @@ public static class WebApplicationBuilderExtensions
                     }
                 }
             }
+
+            // Cache the assembly reference.
+            BlazorResources.CachedAssemblies.Add(asm);
         }
 
         // Return the service collection.

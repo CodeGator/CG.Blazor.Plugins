@@ -20,6 +20,11 @@ public static class BlazorResources
     public static IList<Assembly> RoutedAssemblies { get; }
 
     /// <summary>
+    /// This property contains a list of cached assemblies.
+    /// </summary>
+    internal static IList<Assembly> CachedAssemblies { get; }
+
+    /// <summary>
     /// This property contains a list of stylesheets that are static resources
     /// in a Razor Class Library and must be linked at runtime.
     /// </summary>
@@ -58,6 +63,7 @@ public static class BlazorResources
     static BlazorResources()
     {
         RoutedAssemblies = new List<Assembly>();
+        CachedAssemblies = new List<Assembly>();    
         StyleSheets = new List<string>();
         Scripts = new List<string>();
         ExternalResources = new List<string>();
@@ -135,6 +141,7 @@ public static class BlazorResources
     public static void Clear()
     {
         BlazorResources.RoutedAssemblies.Clear();
+        BlazorResources.CachedAssemblies.Clear();
         BlazorResources.Scripts.Clear();
         BlazorResources.StyleSheets.Clear();
         BlazorResources.Modules.Clear();
