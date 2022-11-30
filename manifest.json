@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.BlazorPluginException.html",
-          "hash": "Q4iNZZcUSIw2qOFXLXxLF+s1/NqxhcSuMrJoDYTIT7g="
+          "hash": "5hJ9ZaSwk3ZbwHGOM3Xc1RZ5Mny+sGE4wpogjR1jpFY="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.BlazorResources.html",
-          "hash": "YdgaASBKZXu+HSAwSypDv1/nacqXvHbtN++SPTSzXAg="
+          "hash": "Gum00dLKaaMRp7hqVT7WC3zAU1/PXTvPxD3lKw3uaJs="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.IModule.html",
-          "hash": "pSzXY+mxoogLfztnPhlRUIsJis00mUId9PwbqKOkdgc="
+          "hash": "LdxE5xjd4e83mGTqaLYR7WiHOA9d2qd7npwofeV2+T0="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.ModuleBase.html",
-          "hash": "5D0tsiPQCsxUM83sZxky6caAQFUFZjEf4qYJhmc/B2M="
+          "hash": "X9ccJSTzLo83VjbhI78nirdI8wKsIncQpXC+0L82tSg="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html",
-          "hash": "BV4vA/P/pkKlUz6j4lGSC82MBZdsSdmHHtDhrshIJUU="
+          "hash": "X6uVNFOzMh1XHlwXYPMDkMGdt/Ht/oglls3bLfjPTQ8="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.Options.BlazorPluginsOptions.html",
-          "hash": "rFdhyPi4bdm4Otwzg5/54luRQcMm/ejDyFXh1Yr9Q/0="
+          "hash": "BxIFtY2HMRxuKQZ/HAJTaKgO9iCl9fTcpYvCOTXPyKk="
         }
       },
       "is_incremental": false,
@@ -110,11 +110,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.yml",
+      "source_relative_path": "api/Microsoft.AspNetCore.Builder.WebApplicationExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.AspNetCore.Builder.ApplicationBuilderExtensions.html",
-          "hash": "6tjpo0BDJP0Oh3zQD12z+SVnChbF+DR9nxgEC/f805Y="
+          "relative_path": "api/Microsoft.AspNetCore.Builder.WebApplicationExtensions.html",
+          "hash": "XM/B4oxYPTqvNYO6ziBA144vdKqJvl5ShA3fnhVaJbU="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.AspNetCore.Builder.html",
-          "hash": "kTUDEPWHm8wQKwAbRgbu7/v2dzh39tZlHtB3rDN2yDA="
+          "hash": "IzN3I+zKqMHQhqvpi3Nbv+I35kjKGoVS6t6a9fJvC5w="
         }
       },
       "is_incremental": false,
@@ -134,11 +134,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.yml",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Microsoft.Extensions.DependencyInjection.ServiceCollectionExtensions.html",
-          "hash": "xsMgGxPfRDrs4j+/Pd7LbnCvd3NvsArstcaBRXeqc1k="
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.WebApplicationBuilderExtensions.html",
+          "hash": "HYt9cNCd+OIZ+y/lxi1TlqYZ4fAy3u/hxh36dbvKAz4="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.Extensions.DependencyInjection.html",
-          "hash": "ftqX57N9/HQJeAUCrhybvUAWuMi+eBnTEt5t9XGKBX4="
+          "hash": "6vOig4W2Cj10DnOsnyzgDEhYN6FlNb9HZlNzSWL6F5E="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "vztGVvyHrcQnDDxGTum1Go2fV1kLrlsJSKSXt9YwQz8="
+          "hash": "iydFmKkET3NBHT/vRIEB9ebLmM228W7OVHZXnUfuCDw="
         }
       },
       "is_incremental": false,

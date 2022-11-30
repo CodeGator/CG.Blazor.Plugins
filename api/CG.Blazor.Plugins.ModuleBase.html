@@ -128,14 +128,14 @@
   <h3 id="methods">Methods
   </h3>
   <a id="CG_Blazor_Plugins_ModuleBase_Configure_" data-uid="CG.Blazor.Plugins.ModuleBase.Configure*"></a>
-  <h4 id="CG_Blazor_Plugins_ModuleBase_Configure_Microsoft_AspNetCore_Builder_IApplicationBuilder_Microsoft_AspNetCore_Hosting_IWebHostEnvironment_" data-uid="CG.Blazor.Plugins.ModuleBase.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">Configure(IApplicationBuilder, IWebHostEnvironment)</h4>
+  <h4 id="CG_Blazor_Plugins_ModuleBase_Configure_WebApplication_" data-uid="CG.Blazor.Plugins.ModuleBase.Configure(WebApplication)">Configure(WebApplication)</h4>
   <div class="markdown level1 summary"><p>This method is called by the framework when the module is first
 loaded, to configure the logic within the plugin</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void Configure(IApplicationBuilder app, IWebHostEnvironment env)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract void Configure(WebApplication webApplication)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,28 +148,23 @@ loaded, to configure the logic within the plugin</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.AspNetCore.Builder.IApplicationBuilder</span></td>
-        <td><span class="parametername">app</span></td>
-        <td><p>The application builder to use for the operation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.AspNetCore.Hosting.IWebHostEnvironment</span></td>
-        <td><span class="parametername">env</span></td>
-        <td><p>The environment to use for the operation.</p>
+        <td><span class="xref">WebApplication</span></td>
+        <td><span class="parametername">webApplication</span></td>
+        <td><p>The web application to use for the
+operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="CG_Blazor_Plugins_ModuleBase_ConfigureServices_" data-uid="CG.Blazor.Plugins.ModuleBase.ConfigureServices*"></a>
-  <h4 id="CG_Blazor_Plugins_ModuleBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration_" data-uid="CG.Blazor.Plugins.ModuleBase.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">ConfigureServices(IServiceCollection, IConfiguration)</h4>
+  <h4 id="CG_Blazor_Plugins_ModuleBase_ConfigureServices_WebApplicationBuilder_IConfiguration_" data-uid="CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder,IConfiguration)">ConfigureServices(WebApplicationBuilder, IConfiguration)</h4>
   <div class="markdown level1 summary"><p>This method is called by the framework when the module is first
 loaded, to configure the services within the plugin.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract void ConfigureServices(IServiceCollection serviceCollection, IConfiguration configuration)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract void ConfigureServices(WebApplicationBuilder webApplicationBuilder, IConfiguration configuration)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -182,22 +177,22 @@ loaded, to configure the services within the plugin.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
-        <td><span class="parametername">serviceCollection</span></td>
-        <td><p>The service collection to
-use for the operation.</p>
+        <td><span class="xref">WebApplicationBuilder</span></td>
+        <td><span class="parametername">webApplicationBuilder</span></td>
+        <td><p>The web application to use
+for the operation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Microsoft.Extensions.Configuration.IConfiguration</span></td>
+        <td><span class="xref">IConfiguration</span></td>
         <td><span class="parametername">configuration</span></td>
-        <td><p>The configuration to use for the
-operation.</p>
+        <td><p>The configuration section to use for
+the operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="CG_Blazor_Plugins_ModuleBase_ConfigureServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_Microsoft_Extensions_Configuration_IConfiguration__remarks">Remarks</h5>
+  <h5 id="CG_Blazor_Plugins_ModuleBase_ConfigureServices_WebApplicationBuilder_IConfiguration__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>
 The <code data-dev-comment-type="paramref" class="paramref">configuration</code> parameter is isolated to the 
 current module&apos;s configuration settings so that each module can then
