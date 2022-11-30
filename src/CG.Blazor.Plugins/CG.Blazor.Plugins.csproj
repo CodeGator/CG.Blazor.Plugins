@@ -12,7 +12,7 @@
 
 Platforms supported:
     .NET 6.x or above</Description>
-    <Copyright>Copyright © 2018 - 2022 by CodeGator. All rights reserved.</Copyright>
+    <Copyright>Copyright © 2018 - 2023 by CodeGator. All rights reserved.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/CodeGator/CG.Blazor.Plugins</PackageProjectUrl>
     <RepositoryUrl>https://github.com/CodeGator/CG.Blazor.Plugins</RepositoryUrl>
