@@ -15,10 +15,11 @@ public class Module : ModuleBase
     /// <inheritdoc/>
     public override void ConfigureServices(
         WebApplicationBuilder webApplicationBuilder,
-        IConfiguration configuration
+        IConfiguration configuration,
+        ILogger? bootstrapLogger
         )
     {
-        // TODO : add your plugin's registration logic here.
+        // TODO : add your plugin's registration / startup logic here.
     }
 
     // *******************************************************************
@@ -28,7 +29,7 @@ public class Module : ModuleBase
         WebApplication webApplication
         )
     {
-        // TODO : add your plugin's startup logic here.
+        // TODO : add your plugin's startup / pipeline logic here.
     }
 
     #endregion

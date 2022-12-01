@@ -14,6 +14,8 @@ public interface IModule
     /// for the operation.</param>
     /// <param name="configuration">The configuration section to use for 
     /// the operation.</param>
+    /// <param name="bootstrapLogger">An optional bootstrap logger to 
+    /// use for the operation.</param>
     /// <remarks>
     /// <para>
     /// The <paramref name="configuration"/> parameter is isolated to the 
@@ -25,7 +27,8 @@ public interface IModule
     /// </remarks>
     void ConfigureServices(
         WebApplicationBuilder webApplicationBuilder,
-        IConfiguration configuration
+        IConfiguration configuration,
+        ILogger? bootstrapLogger
         );
 
     /// <summary>

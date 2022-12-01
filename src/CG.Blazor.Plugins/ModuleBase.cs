@@ -15,7 +15,8 @@ namespace CG.Blazor.Plugins
         /// <inheritdoc />
         public abstract void ConfigureServices(
             WebApplicationBuilder webApplicationBuilder,
-            IConfiguration configuration
+            IConfiguration configuration,
+            ILogger? bootstrapLogger
             );
 
         /// <inheritdoc />

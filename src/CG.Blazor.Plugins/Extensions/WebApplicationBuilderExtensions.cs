@@ -304,7 +304,8 @@ public static class WebApplicationBuilderExtensions
                         // Register any services in the module.
                         moduleObj.ConfigureServices(
                             webApplicationBuilder,
-                            moduleSection
+                            moduleSection,
+                            bootstrapLogger
                             );
 
                         // Log what we are about to do.
@@ -382,7 +383,8 @@ public static class WebApplicationBuilderExtensions
                             // Register any services in the module.
                             moduleObj.ConfigureServices(
                                 webApplicationBuilder,
-                                moduleSection
+                                moduleSection,
+                                bootstrapLogger
                                 );
 
                             // Log what we are about to do.
@@ -408,9 +410,6 @@ public static class WebApplicationBuilderExtensions
                     }
                 }
             }
-
-            // Cache the assembly reference.
-            BlazorResources.CachedAssemblies.Add(asm);
         }
 
         // Return the service collection.
