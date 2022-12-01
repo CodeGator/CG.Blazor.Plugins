@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.IModule.html",
-          "hash": "LdxE5xjd4e83mGTqaLYR7WiHOA9d2qd7npwofeV2+T0="
+          "hash": "lcVJctqfxH9rtdw5QcK9526cmeCHW8+v4Zb26ut5jO8="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/CG.Blazor.Plugins.ModuleBase.html",
-          "hash": "X9ccJSTzLo83VjbhI78nirdI8wKsIncQpXC+0L82tSg="
+          "hash": "XXp2Du1C3KwHWAroUJo8KOSQQyYqJ2rSDRlcuDdZlS8="
         }
       },
       "is_incremental": false,

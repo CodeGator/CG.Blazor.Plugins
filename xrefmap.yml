@@ -134,12 +134,15 @@ references:
   isSpec: "True"
   fullName: CG.Blazor.Plugins.IModule.Configure
   nameWithType: IModule.Configure
-- uid: CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder,IConfiguration)
-  name: ConfigureServices(WebApplicationBuilder, IConfiguration)
-  href: api/CG.Blazor.Plugins.IModule.html#CG_Blazor_Plugins_IModule_ConfigureServices_WebApplicationBuilder_IConfiguration_
-  commentId: M:CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder,IConfiguration)
-  fullName: CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder, IConfiguration)
-  nameWithType: IModule.ConfigureServices(WebApplicationBuilder, IConfiguration)
+- uid: CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder,IConfiguration,System.Nullable{ILogger})
+  name: ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable<ILogger>)
+  href: api/CG.Blazor.Plugins.IModule.html#CG_Blazor_Plugins_IModule_ConfigureServices_WebApplicationBuilder_IConfiguration_System_Nullable_ILogger__
+  commentId: M:CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder,IConfiguration,System.Nullable{ILogger})
+  name.vb: ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable(Of ILogger))
+  fullName: CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder, IConfiguration, System.Nullable<ILogger>)
+  fullName.vb: CG.Blazor.Plugins.IModule.ConfigureServices(WebApplicationBuilder, IConfiguration, System.Nullable(Of ILogger))
+  nameWithType: IModule.ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable<ILogger>)
+  nameWithType.vb: IModule.ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable(Of ILogger))
 - uid: CG.Blazor.Plugins.IModule.ConfigureServices*
   name: ConfigureServices
   href: api/CG.Blazor.Plugins.IModule.html#CG_Blazor_Plugins_IModule_ConfigureServices_
@@ -166,12 +169,15 @@ references:
   isSpec: "True"
   fullName: CG.Blazor.Plugins.ModuleBase.Configure
   nameWithType: ModuleBase.Configure
-- uid: CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder,IConfiguration)
-  name: ConfigureServices(WebApplicationBuilder, IConfiguration)
-  href: api/CG.Blazor.Plugins.ModuleBase.html#CG_Blazor_Plugins_ModuleBase_ConfigureServices_WebApplicationBuilder_IConfiguration_
-  commentId: M:CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder,IConfiguration)
-  fullName: CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder, IConfiguration)
-  nameWithType: ModuleBase.ConfigureServices(WebApplicationBuilder, IConfiguration)
+- uid: CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder,IConfiguration,System.Nullable{ILogger})
+  name: ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable<ILogger>)
+  href: api/CG.Blazor.Plugins.ModuleBase.html#CG_Blazor_Plugins_ModuleBase_ConfigureServices_WebApplicationBuilder_IConfiguration_System_Nullable_ILogger__
+  commentId: M:CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder,IConfiguration,System.Nullable{ILogger})
+  name.vb: ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable(Of ILogger))
+  fullName: CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder, IConfiguration, System.Nullable<ILogger>)
+  fullName.vb: CG.Blazor.Plugins.ModuleBase.ConfigureServices(WebApplicationBuilder, IConfiguration, System.Nullable(Of ILogger))
+  nameWithType: ModuleBase.ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable<ILogger>)
+  nameWithType.vb: ModuleBase.ConfigureServices(WebApplicationBuilder, IConfiguration, Nullable(Of ILogger))
 - uid: CG.Blazor.Plugins.ModuleBase.ConfigureServices*
   name: ConfigureServices
   href: api/CG.Blazor.Plugins.ModuleBase.html#CG_Blazor_Plugins_ModuleBase_ConfigureServices_
