@@ -77,7 +77,7 @@ public static class WebApplicationBuilderExtensions
             );
 
         // Log what we are about to do.
-        bootstrapLogger?.LogDebug(
+        bootstrapLogger?.LogInformation(
             "Looping through {count} enabled plugin modules",
             modules.Count()
             );
@@ -119,7 +119,7 @@ public static class WebApplicationBuilderExtensions
                         );
 
                     // Log what we are about to do.
-                    bootstrapLogger?.LogDebug(
+                    bootstrapLogger?.LogInformation(
                         "Loading assembly by path: {path}",
                         completePath
                         );
@@ -134,7 +134,7 @@ public static class WebApplicationBuilderExtensions
                     try
                     {
                         // Log what we are about to do.
-                        bootstrapLogger?.LogDebug(
+                        bootstrapLogger?.LogInformation(
                             "Loading assembly by name: {name}",
                             module.AssemblyNameOrPath
                             );
@@ -162,7 +162,7 @@ public static class WebApplicationBuilderExtensions
                 try
                 {
                     // Log what we are about to do.
-                    bootstrapLogger?.LogDebug(
+                    bootstrapLogger?.LogInformation(
                         "Loading assembly by name: {name}",
                         module.AssemblyNameOrPath
                         );
@@ -203,7 +203,7 @@ public static class WebApplicationBuilderExtensions
             if (module.Routed)
             {
                 // Log what we are about to do.
-                bootstrapLogger?.LogDebug(
+                bootstrapLogger?.LogInformation(
                     "Marking the assembly for routing support"
                     );
 
@@ -251,7 +251,7 @@ public static class WebApplicationBuilderExtensions
             if (false == string.IsNullOrEmpty(module.EntryPoint))
             {
                 // Log what we are about to do.
-                bootstrapLogger?.LogDebug(
+                bootstrapLogger?.LogInformation(
                     "Resolving custom entry point: {name]",
                     module.EntryPoint
                     );
@@ -315,7 +315,7 @@ public static class WebApplicationBuilderExtensions
 
                         // Since we've gone to all the trouble to create this module, and we
                         //    know we'll need it again, as part of the whole startup operation,
-                        //    let's go ahead and cache it now, so we don't have to re-create it,
+                        //    let's go ahead and cache it now so we don't have to re-create it,
                         //    next time we need it.
                         BlazorResources.Modules.Add(moduleObj);
                     }
@@ -333,7 +333,7 @@ public static class WebApplicationBuilderExtensions
             else
             {
                 // Log what we are about to do.
-                bootstrapLogger?.LogDebug(
+                bootstrapLogger?.LogInformation(
                     "Resolving standard entry point: {name}",
                     $"{asm.GetName().Name}.Module"
                     );
