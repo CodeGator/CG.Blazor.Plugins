@@ -5,6 +5,7 @@
 
 * I refactored the library.
 * bug fixes
+* I added better dependency loading.
 
 ## 2022.1 
 
