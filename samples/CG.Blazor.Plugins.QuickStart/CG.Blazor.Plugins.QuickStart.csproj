@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\CG.Blazor.Plugins\CG.Blazor.Plugins.csproj" />
-    <ProjectReference Include="..\CG.Blazor.Plugins.TestPlugin\CG.Blazor.Plugins.TestPlugin.csproj" />
   </ItemGroup>
 
 </Project>

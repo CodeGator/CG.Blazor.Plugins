@@ -185,6 +185,23 @@ public static class WebApplicationBuilderExtensions
                 }
             }
 
+            try
+            {
+                // Attempt to load all the dependencies for the assembly.
+                Package.ParseDependencies(asm);
+            }
+            catch (Exception ex)
+            {
+                // Provide better context for the error.
+                throw new BlazorPluginException(
+                    innerException: ex,
+                    message: $"While loading the assembly: '{asm.FullName}' one or more of " +
+                    "its dependencies failed to load. This usually happens because a plugin " +
+                    "was copied to a new location without also copying all the dependencies of " +
+                    "that plugin. See inner exceptions for more detail."
+                    );
+            }
+
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
                 "Fetching the assembly name from a plugin"

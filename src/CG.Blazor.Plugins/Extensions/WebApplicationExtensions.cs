@@ -172,7 +172,7 @@ public static class WebApplicationExtensions
                     );
             }
 
-            // Parse out the assembly name.
+            // ParseDependencies out the assembly name.
             var asmName = resource[index1..index2];
 
             // Have we already created a file provider for this assembly?
@@ -269,7 +269,7 @@ public static class WebApplicationExtensions
                     );
             }
 
-            // Parse out the assembly name.
+            // ParseDependencies out the assembly name.
             var asmName = resource[index1..index2];
 
             // Have we already created a file provider for this assembly?
