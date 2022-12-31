@@ -269,7 +269,13 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogInformation(
-                    "Resolving custom entry point: {name]",
+                    "Resolved custom entry point: {name}",
+                    module.EntryPoint
+                    );
+
+                // Log what we are about to do.
+                bootstrapLogger?.LogDebug(
+                    "Loading module type: {name}",
                     module.EntryPoint
                     );
 
@@ -292,8 +298,9 @@ public static class WebApplicationBuilderExtensions
                 try
                 {
                     // Log what we are about to do.
-                    bootstrapLogger?.LogDebug(
-                        "Creating the module for this plugin."
+                    bootstrapLogger?.LogInformation(
+                        "Creating module instance for plugin: {name}",
+                        module.EntryPoint
                         );
 
                     // Try to create an instance of the module.
@@ -314,8 +321,9 @@ public static class WebApplicationBuilderExtensions
                             );
 
                         // Log what we are about to do.
-                        bootstrapLogger?.LogDebug(
-                            "Configuring the plugin."
+                        bootstrapLogger?.LogInformation(
+                            "Configuring plugin: {name}",
+                            module.EntryPoint
                             );
 
                         // Register any services in the module.
@@ -371,8 +379,9 @@ public static class WebApplicationBuilderExtensions
                     try
                     {
                         // Log what we are about to do.
-                        bootstrapLogger?.LogDebug(
-                            "Creating the module for this plugin."
+                        bootstrapLogger?.LogInformation(
+                            "Creating module instance for plugin: {name}",
+                            module.EntryPoint
                             );
 
                         // Try to create an instance of the module.
@@ -393,8 +402,9 @@ public static class WebApplicationBuilderExtensions
                                 );
 
                             // Log what we are about to do.
-                            bootstrapLogger?.LogDebug(
-                                "Configuring the plugin."
+                            bootstrapLogger?.LogInformation(
+                                "Configuring plugin: {name}",
+                                module.EntryPoint
                                 );
 
                             // Register any services in the module.
