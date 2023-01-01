@@ -46,7 +46,8 @@ public static class WebApplicationBuilderExtensions
 
         // Log what we are about to do.
         bootstrapLogger?.LogDebug(
-            "Fetching the configuration section: {section}",
+            "Fetching the configuration section: {section}, " +
+            "for the plugin loader",
             configurationSection
             );
 
@@ -57,7 +58,7 @@ public static class WebApplicationBuilderExtensions
 
         // Log what we are about to do.
         bootstrapLogger?.LogDebug(
-            "Configuring the plugin options"
+            "Configuring the plugin options, for the plugin loader"
             );
 
         // Configure the plugin options.
@@ -68,7 +69,7 @@ public static class WebApplicationBuilderExtensions
 
         // Log what we are about to do.
         bootstrapLogger?.LogDebug(
-            "Getting the list of modules"
+            "Getting the list of modules for the plugin loader"
             );
 
         // Get the list of current enabled plugin modules.
@@ -78,7 +79,8 @@ public static class WebApplicationBuilderExtensions
 
         // Log what we are about to do.
         bootstrapLogger?.LogInformation(
-            "Looping through {count} enabled plugin modules",
+            "Looping through {count} enabled plugin modules, " +
+            "for the plugin loader",
             modules.Count()
             );
 
@@ -91,7 +93,8 @@ public static class WebApplicationBuilderExtensions
 
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Deciding whether the assembly name is a path, or not."
+                "Deciding whether the assembly name is a path, or " +
+                "not, for the plugin loader."
                 );
 
             Assembly? asm = null;
@@ -102,7 +105,8 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogDebug(
-                    "Deciding whether the assembly path is rooted, or not."
+                    "Deciding whether the assembly path is rooted, or " +
+                    "not, for the plugin loader."
                     );
 
                 // Check for relative paths.
@@ -110,7 +114,8 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Building a complete path to a plugin assembly."
+                        "Building a complete path to a plugin assembly, " +
+                        "for the plugin loader"
                         );
 
                     // Expand the path (the load expects a rooted path).
@@ -120,7 +125,8 @@ public static class WebApplicationBuilderExtensions
 
                     // Log what we are about to do.
                     bootstrapLogger?.LogInformation(
-                        "Loading assembly by path: {path}",
+                        "Loading assembly by path: {path}, for the plugin " +
+                        "loader",
                         completePath
                         );
 
@@ -135,7 +141,8 @@ public static class WebApplicationBuilderExtensions
                     {
                         // Log what we are about to do.
                         bootstrapLogger?.LogInformation(
-                            "Loading assembly by name: {name}",
+                            "Loading assembly by name: {name}, for the " +
+                            "plugin loader",
                             module.AssemblyNameOrPath
                             );
 
@@ -163,7 +170,8 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogInformation(
-                        "Loading assembly by name: {name}",
+                        "Loading assembly by name: {name}, for the plugin " +
+                        "loader",
                         module.AssemblyNameOrPath
                         );
 
@@ -204,7 +212,8 @@ public static class WebApplicationBuilderExtensions
 
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Fetching the assembly name from a plugin"
+                "Fetching the assembly name from a plugin, for the " +
+                "plugin loader."
                 );
 
             // Create a safe name for the assembly.
@@ -221,7 +230,8 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogInformation(
-                    "Marking the assembly for routing support"
+                    "Marking the assembly for routing support, for the " +
+                    "plugin loader"
                     );
 
                 // Remember the assembly on behalf of Blazor.
@@ -232,7 +242,8 @@ public static class WebApplicationBuilderExtensions
 
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Fetching the static resources (if any) from the assembly"
+                "Fetching the static resources (if any) from the assembly " +
+                ", for the plugin loader"
                 );
 
             // Get the static resources from the assembly.
@@ -240,7 +251,7 @@ public static class WebApplicationBuilderExtensions
 
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Building links to style sheets."
+                "Building links to style sheets, for the plugin loader."
                 );
 
             // Add links for any embedded style sheets.
@@ -253,7 +264,7 @@ public static class WebApplicationBuilderExtensions
 
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Building links to scripts."
+                "Building links to scripts, for the plugin loader."
                 );
 
             // Add tags for any embedded scripts.
@@ -269,13 +280,15 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogInformation(
-                    "Resolved custom entry point: {name}",
+                    "Resolved custom entry point: {name}, for the " +
+                    "plugin loader",
                     module.EntryPoint
                     );
 
                 // Log what we are about to do.
                 bootstrapLogger?.LogDebug(
-                    "Loading module type: {name}",
+                    "Loading module type: {name}, for the plugin " +
+                    "loader",
                     module.EntryPoint
                     );
 
@@ -299,7 +312,8 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogInformation(
-                        "Creating module instance for plugin: {name}",
+                        "Creating module instance for plugin: {name}, for the " +
+                        "plugin loader",
                         module.EntryPoint
                         );
 
@@ -310,7 +324,8 @@ public static class WebApplicationBuilderExtensions
                     {
                         // Log what we are about to do.
                         bootstrapLogger?.LogDebug(
-                            "Filtering down to the plugin's configuration section."
+                            "Filtering down to the plugin's configuration " +
+                            "section, for the plugin loader."
                             );
 
                         // Filter down to the section for this module. This way, each module
@@ -322,7 +337,7 @@ public static class WebApplicationBuilderExtensions
 
                         // Log what we are about to do.
                         bootstrapLogger?.LogInformation(
-                            "Configuring plugin: {name}",
+                            "Configuring plugin: {name}, for the plugin loader",
                             module.EntryPoint
                             );
 
@@ -335,7 +350,7 @@ public static class WebApplicationBuilderExtensions
 
                         // Log what we are about to do.
                         bootstrapLogger?.LogDebug(
-                            "Adding the assembly to the cache."
+                            "Adding the assembly to the cache, for the plugin loader."
                             );
 
                         // Since we've gone to all the trouble to create this module, and we
@@ -359,7 +374,7 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogInformation(
-                    "Resolving standard entry point: {name}",
+                    "Resolving standard entry point: {name}, for the plugin loader",
                     $"{asm.GetName().Name}.Module"
                     );
 
@@ -380,7 +395,8 @@ public static class WebApplicationBuilderExtensions
                     {
                         // Log what we are about to do.
                         bootstrapLogger?.LogInformation(
-                            "Creating module instance for plugin: {name}",
+                            "Creating module instance for plugin: {name}, for the " +
+                            "plugin loader",
                             module.EntryPoint
                             );
 
@@ -391,7 +407,8 @@ public static class WebApplicationBuilderExtensions
                         {
                             // Log what we are about to do.
                             bootstrapLogger?.LogDebug(
-                                "Filtering down to the plugin's configuration section."
+                                "Filtering down to the plugin's configuration section, " +
+                                "for the plugin loader"
                                 );
 
                             // Filter down to the section for this module. This way, each module
@@ -403,7 +420,7 @@ public static class WebApplicationBuilderExtensions
 
                             // Log what we are about to do.
                             bootstrapLogger?.LogInformation(
-                                "Configuring plugin: {name}",
+                                "Configuring plugin: {name}, for the plugin loader",
                                 module.EntryPoint
                                 );
 
@@ -416,7 +433,7 @@ public static class WebApplicationBuilderExtensions
 
                             // Log what we are about to do.
                             bootstrapLogger?.LogDebug(
-                                "Adding the assembly to the cache."
+                                "Adding the assembly to the cache, for the plugin loader."
                                 );
 
                             // Since we've gone to all the trouble to create this module, and we
@@ -472,7 +489,7 @@ public static class WebApplicationBuilderExtensions
         {
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Looping through {count} scripts",
+                "Looping through {count} scripts, for the plugin loader",
                 module.Scripts.Count()
                 );
 
@@ -481,7 +498,8 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogDebug(
-                    "Checking for embedded HTML in the link"
+                    "Checking for embedded HTML in the link, for the " +
+                    "plugin loader"
                     );
 
                 // Check for embedded html in the path.
@@ -499,7 +517,7 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Validating the script link"
+                        "Validating the script link, for the plugin loader"
                         );
 
                     // Check for the resource in the assembly.
@@ -516,7 +534,8 @@ public static class WebApplicationBuilderExtensions
 
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Adding a script link to the resource cache"
+                        "Adding a script link to the resource cache, for the " +
+                        "plugin loader"
                         );
 
                     // Add the link.
@@ -528,7 +547,7 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Validating the script link"
+                        "Validating the script link, for the plugin loader"
                         );
 
                     // Check for the resource in the assembly.
@@ -545,7 +564,8 @@ public static class WebApplicationBuilderExtensions
 
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Adding a script link to the resource cache"
+                        "Adding a script link to the resource cache, for " +
+                        "the plugin loader"
                         );
 
                     // Add the link.
@@ -580,7 +600,8 @@ public static class WebApplicationBuilderExtensions
         {
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
-                "Looping through {count} style sheets",
+                "Looping through {count} style sheets, for the " +
+                "plugin loader",
                 module.StyleSheets.Count()
                 );
 
@@ -589,7 +610,8 @@ public static class WebApplicationBuilderExtensions
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogDebug(
-                    "Checking for embedded HTML in the link"
+                    "Checking for embedded HTML in the link, for " +
+                    "the plugin loader"
                     );
 
                 // Check for embedded html in the path.
@@ -607,7 +629,8 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Validating the style sheet link"
+                        "Validating the style sheet link, for the " +
+                        "plugin loader"
                         );
 
                     // Check for the resource in the assembly.
@@ -624,7 +647,8 @@ public static class WebApplicationBuilderExtensions
 
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Adding a stylesheet link to the resource cache"
+                        "Adding a stylesheet link to the resource cache, " +
+                        "for the plugin loader"
                         );
 
                     // Add the link.
@@ -636,7 +660,7 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Validating the style sheet link"
+                        "Validating the style sheet link, for the plugin loader"
                         );
 
                     // Check for the resource in the assembly.
@@ -653,7 +677,8 @@ public static class WebApplicationBuilderExtensions
 
                     // Log what we are about to do.
                     bootstrapLogger?.LogDebug(
-                        "Adding a stylesheet link to the resource cache"
+                        "Adding a stylesheet link to the resource cache, " +
+                        "for the plugin loader"
                         );
 
                     // Add the link.

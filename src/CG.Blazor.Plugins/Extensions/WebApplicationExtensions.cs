@@ -35,6 +35,11 @@ public static class WebApplicationExtensions
         //   file provider for each plugin assembly and wire everything together with
         //   a composite file provider. We'll do that here.
 
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Wiring up static file support, for the plugin loader."
+            );
+
         // Ensure we're setup to use static files.
         webApplication.UseStaticFiles();
 
@@ -51,16 +56,33 @@ public static class WebApplicationExtensions
 
         var asmNameSet = new HashSet<string>();
 
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Building style sheet support for the plugin loader."
+            );
+
         // Add providers for any embedded style sheets.
         BuildStyleSheetProviders(
             asmNameSet,
-            allProviders
+            allProviders,
+            webApplication.Logger
+            );
+
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Building java script support for the plugin loader."
             );
 
         // Add providers for any embedded scripts.
         BuildScriptProviders(
             asmNameSet,
-            allProviders
+            allProviders,
+            webApplication.Logger
+            );
+
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Fetching the plugin options for the plugin loader."
             );
 
         // Get the plugin options.
@@ -68,11 +90,22 @@ public static class WebApplicationExtensions
             IOptions<BlazorPluginsOptions>
             >();
 
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Building remaining providers for the plugin loader."
+            );
+
         // Add any remaining providers.
         BuildRemainingProviders(
             options,
             asmNameSet,
-            allProviders
+            allProviders,
+            webApplication.Logger
+            );
+
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Replacing existing file provider with one for the plugin loader."
             );
 
         // Replace the existing file provider with a composite provider.
@@ -82,6 +115,12 @@ public static class WebApplicationExtensions
 
         var errors = new List<Exception>();
 
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Configuring {count} providers for the plugin loader.",
+            BlazorResources.Modules.Count
+            );
+
         // The final thing we need to do is walk through the list of modules
         //   and call the Configure method on each one, just in case any of 
         //   them are expecting that to happen.
@@ -89,6 +128,11 @@ public static class WebApplicationExtensions
         {
             try
             {
+                // Log what we are about to do.
+                webApplication.Logger.LogDebug(
+                    "Configuring a module for the plugin loader."
+                    );
+
                 // Configure any services in the module.
                 module.Configure(
                     webApplication
@@ -109,6 +153,11 @@ public static class WebApplicationExtensions
                 innerExceptions: errors
                 );
         }
+
+        // Log what we are about to do.
+        webApplication.Logger.LogDebug(
+            "Clearing the module cache for the plugin loader."
+            );
 
         // At this point we clear the cached modules because we no longer
         //   require those resources in memory.
@@ -136,14 +185,27 @@ public static class WebApplicationExtensions
     /// assemblies.</param>
     /// <param name="allProviders">The list of all previously added file
     /// providers.</param>
+    /// <param name="logger">The logger to use for the operation.</param>
     private static void BuildScriptProviders(
         HashSet<string> asmNameSet,
-        List<IFileProvider> allProviders
+        List<IFileProvider> allProviders,
+        ILogger logger
         )
     {
+        // Log what we are about to do.
+        logger.LogDebug(
+            "Looping through {count} script tags for the plugin loader.",
+            BlazorResources.Scripts.Count
+            );
+
         // Loop through all the script tags.
         foreach (var resource in BlazorResources.Scripts)
         {
+            // Log what we are about to do.
+            logger.LogDebug(
+                "Parsing a script tag, for the plugin loader."
+                );
+
             // We won't check these tags for embedded HTML since that 
             //   was already done in the AddPlugins method.
 
@@ -172,6 +234,11 @@ public static class WebApplicationExtensions
                     );
             }
 
+            // Log what we are about to do.
+            logger.LogDebug(
+                "Parsing dependencies out of the assembly name, for the plugin loader."
+                );
+
             // ParseDependencies out the assembly name.
             var asmName = resource[index1..index2];
 
@@ -187,6 +254,11 @@ public static class WebApplicationExtensions
             Assembly? asm = null;
             try
             {
+                // Log what we are about to do.
+                logger.LogDebug(
+                    "Fetching assembly reference, for the plugin loader."
+                    );
+
                 // Get the assembly reference.
                 asm = Assembly.Load(
                     new AssemblyName(asmName)
@@ -204,6 +276,11 @@ public static class WebApplicationExtensions
 
             try
             {
+                // Log what we are about to do.
+                logger.LogDebug(
+                    "Creating a file provider, for the plugin loader."
+                    );
+
                 // Create a file provider to read embedded resources.
                 var fileProvider = new ManifestEmbeddedFileProviderEx(
                         asm,
@@ -233,14 +310,27 @@ public static class WebApplicationExtensions
     /// assemblies.</param>
     /// <param name="allProviders">The list of all previously added file
     /// providers.</param>
+    /// <param name="logger">The logger to use for the operation.</param>
     private static void BuildStyleSheetProviders(
         HashSet<string> asmNameSet,
-        List<IFileProvider> allProviders
+        List<IFileProvider> allProviders,
+        ILogger logger
         )
     {
+        // Log what we are about to do.
+        logger.LogDebug(
+            "Looping through {count} style sheet links for the plugin loader.",
+            BlazorResources.StyleSheets.Count
+            );
+
         // Loop through all the style sheets links.
         foreach (var resource in BlazorResources.StyleSheets)
         {
+            // Log what we are about to do.
+            logger.LogDebug(
+                "Parsing a style sheet link, for the plugin loader."
+                );
+
             // We won't check these tags for embedded HTML since that 
             //   was already done in the AddPlugins method.
 
@@ -269,6 +359,11 @@ public static class WebApplicationExtensions
                     );
             }
 
+            // Log what we are about to do.
+            logger.LogDebug(
+                "Parsing dependencies out of the assembly name, for the plugin loader."
+                );
+
             // ParseDependencies out the assembly name.
             var asmName = resource[index1..index2];
 
@@ -284,6 +379,11 @@ public static class WebApplicationExtensions
             Assembly? asm = null;
             try
             {
+                // Log what we are about to do.
+                logger.LogDebug(
+                    "Fetching assembly reference, for the plugin loader."
+                    );
+
                 // Get the assembly reference.
                 asm = Assembly.Load(
                     new AssemblyName(asmName)
@@ -301,6 +401,11 @@ public static class WebApplicationExtensions
 
             try
             {
+                // Log what we are about to do.
+                logger.LogDebug(
+                    "Creating a file provider, for the plugin loader."
+                    );
+
                 // Create a file provider to read embedded resources.
                 var fileProvider = new ManifestEmbeddedFileProviderEx(
                         asm,
@@ -329,15 +434,28 @@ public static class WebApplicationExtensions
     /// assemblies.</param>
     /// <param name="allProviders">The list of all previously added file
     /// providers.</param>
+    /// <param name="logger">The logger to use for the operation.</param>
     private static void BuildRemainingProviders(
         IOptions<BlazorPluginsOptions> options,
         HashSet<string> asmNameSet,
-        List<IFileProvider> allProviders
+        List<IFileProvider> allProviders,
+        ILogger logger
         )
     {
+        // Log what we are about to do.
+        logger.LogDebug(
+            "Looping through {count} modules for the plugin loader.",
+            BlazorResources.Modules.Count
+            );
+
         // Loop through all the plugin modules.
         foreach (var module in options.Value.Modules)
         {
+            // Log what we are about to do.
+            logger.LogDebug(
+                "Parsing a module name, for the plugin loader."
+                );
+
             Assembly? asm;
 
             // Is this module configured with a path?
@@ -357,6 +475,11 @@ public static class WebApplicationExtensions
                 // Check for relative paths.
                 if (false == Path.IsPathRooted(module.AssemblyNameOrPath))
                 {
+                    // Log what we are about to do.
+                    logger.LogDebug(
+                        "Loading an assembly, for the plugin loader."
+                        );
+
                     // Expand the path (the load expects a rooted path).
                     var completePath = Path.GetFullPath(
                         module.AssemblyNameOrPath
@@ -371,6 +494,11 @@ public static class WebApplicationExtensions
                 {
                     try
                     {
+                        // Log what we are about to do.
+                        logger.LogDebug(
+                            "Loading an assembly, for the plugin loader."
+                            );
+
                         // Load the assembly from the path.
                         asm = Assembly.Load(
                             new AssemblyName(module.AssemblyNameOrPath)
@@ -399,6 +527,11 @@ public static class WebApplicationExtensions
 
                 try
                 {
+                    // Log what we are about to do.
+                    logger.LogDebug(
+                        "Loading an assembly, for the plugin loader."
+                        );
+
                     // Load the assembly by name.
                     asm = Assembly.Load(
                         new AssemblyName(module.AssemblyNameOrPath)
@@ -422,6 +555,11 @@ public static class WebApplicationExtensions
 
             try
             {
+                // Log what we are about to do.
+                logger.LogDebug(
+                    "Creating a file provider, for the plugin loader."
+                    );
+
                 // Create a file provider to read embedded resources.
                 var fileProvider = new ManifestEmbeddedFileProviderEx(
                         asm,
