@@ -312,9 +312,9 @@ public static class WebApplicationBuilderExtensions
                 {
                     // Log what we are about to do.
                     bootstrapLogger?.LogInformation(
-                        "Creating module instance for plugin: {name}, for the " +
+                        "Creating module instance for plugin: '{name}', for the " +
                         "plugin loader",
-                        module.EntryPoint
+                        module.AssemblyNameOrPath
                         );
 
                     // Try to create an instance of the module.
@@ -337,8 +337,8 @@ public static class WebApplicationBuilderExtensions
 
                         // Log what we are about to do.
                         bootstrapLogger?.LogInformation(
-                            "Configuring plugin: {name}, for the plugin loader",
-                            module.EntryPoint
+                            "Configuring plugin: '{name}', for the plugin loader",
+                            module.AssemblyNameOrPath
                             );
 
                         // Register any services in the module.
@@ -395,9 +395,9 @@ public static class WebApplicationBuilderExtensions
                     {
                         // Log what we are about to do.
                         bootstrapLogger?.LogInformation(
-                            "Creating module instance for plugin: {name}, for the " +
+                            "Creating module instance for plugin: '{name}', for the " +
                             "plugin loader",
-                            module.EntryPoint
+                            module.AssemblyNameOrPath
                             );
 
                         // Try to create an instance of the module.
@@ -420,8 +420,8 @@ public static class WebApplicationBuilderExtensions
 
                             // Log what we are about to do.
                             bootstrapLogger?.LogInformation(
-                                "Configuring plugin: {name}, for the plugin loader",
-                                module.EntryPoint
+                                "Configuring plugin: '{name}', for the plugin loader",
+                                module.AssemblyNameOrPath
                                 );
 
                             // Register any services in the module.
