@@ -458,6 +458,20 @@ public static class WebApplicationExtensions
 
             Assembly? asm;
 
+            // Sanity check the assembly name/path.
+            if (string.IsNullOrEmpty(module.AssemblyNameOrPath))
+            {
+                // Log what we are about to do.
+                logger.LogWarning(
+                    "The 'AssemblyNameOrPath' property is empty for a plugin " +
+                    "module! Check that all modules have a value for 'AssemblyNameOrPath'. " +
+                    "Check that all configuration environments match, since partial information " +
+                    "in a sub environment (secrets, development, etc), can be seen by the plugin " +
+                    "loader as an incomplete plugin configuration."
+                    );
+                continue; // Nothing more to do.
+            }
+
             // Is this module configured with a path?
             if (module.AssemblyNameOrPath.EndsWith(".dll"))
             {

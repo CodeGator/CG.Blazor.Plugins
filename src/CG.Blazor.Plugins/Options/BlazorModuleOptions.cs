@@ -13,62 +13,40 @@ public class BlazorModuleOptions
     #region Properties
 
     /// <summary>
-    /// This property indicates whether the plugin is enabled for loading, or not.
+    /// This property indicates whether the plugin is disabled, or not.
     /// </summary>
-    public bool IsEnabled { get; set; }
+    public bool IsDisabled { get; set; }
 
     /// <summary>
     /// This property contains an optional assembly name, or path, for the 
     /// Blazor plugin assembly that corresponds to the plugin.
     /// </summary>
-    public string AssemblyNameOrPath { get; set; }
+    [Required]
+    public string AssemblyNameOrPath { get; set; } = null!;
 
     /// <summary>
     /// This property indicates that the plugin requires routing support,
     /// from Blazor, at runtime.
     /// </summary>
-    public bool Routed { get; set; }
+    public bool IsRouted { get; set; }
 
     /// <summary>
     /// This property contains an optional list of resources, from the plugin, 
     /// that should be injected into the HTML head section, at runtime.
     /// </summary>
-    public IList<string> StyleSheets { get; set; }
+    public List<string> StyleSheets { get; set; } = new();
 
     /// <summary>
     /// This property contains an optional list of scripts, from the plugin, 
     /// that should be injected into the HTML head section, at runtime.
     /// </summary>
-    public IList<string> Scripts { get; set; }
+    public List<string> Scripts { get; set; } = new();
 
     /// <summary>
-    /// This property contains the name of an options entry point for the 
-    /// plugin.
+    /// This property contains the optional name of an options entry point 
+    /// for the plugin.
     /// </summary>
-    public string EntryPoint { get; set; }
-
-    #endregion
-
-    // *******************************************************************
-    // Constructors.
-    // *******************************************************************
-
-    #region Constructors
-
-    /// <summary>
-    /// This constructor creates a new instance of the <see cref="BlazorModuleOptions"/>
-    /// class.
-    /// </summary>
-    public BlazorModuleOptions()
-    {
-        // Make the compiler happy with default values.
-        IsEnabled = true;
-        AssemblyNameOrPath = "";
-        Routed = false;
-        StyleSheets = new List<string>();
-        Scripts = new List<string>();
-        EntryPoint = "";
-    }
+    public string? EntryPoint { get; set; }
 
     #endregion
 }

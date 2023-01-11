@@ -74,7 +74,7 @@ public static class WebApplicationBuilderExtensions
 
         // Get the list of current enabled plugin modules.
         var modules = pluginOptions.Modules.Where(x => 
-            x.IsEnabled
+            !x.IsDisabled
             );
 
         // Log what we are about to do.
@@ -90,6 +90,20 @@ public static class WebApplicationBuilderExtensions
         foreach (var module in modules)
         {
             index++; // Used for extracting configuration sections.
+
+            // Sanity check the assembly name/path.
+            if (string.IsNullOrEmpty(module.AssemblyNameOrPath))
+            {
+                // Log what we are about to do.
+                bootstrapLogger?.LogWarning(
+                    "The 'AssemblyNameOrPath' property is empty for a plugin " +
+                    "module! Check that all modules have a value for 'AssemblyNameOrPath'. " +
+                    "Check that all configuration environments match, since partial information " +
+                    "in a sub environment (secrets, development, etc), can be seen by the plugin " +
+                    "loader as an incomplete plugin configuration."
+                    );
+                continue; // Nothing more to do.
+            }
 
             // Log what we are about to do.
             bootstrapLogger?.LogDebug(
@@ -226,7 +240,7 @@ public static class WebApplicationBuilderExtensions
             }
 
             // Does the module require Blazor routing support?
-            if (module.Routed)
+            if (module.IsRouted)
             {
                 // Log what we are about to do.
                 bootstrapLogger?.LogInformation(
