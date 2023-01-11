@@ -197,19 +197,6 @@ references:
   commentId: T:CG.Blazor.Plugins.Options.BlazorModuleOptions
   fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions
   nameWithType: BlazorModuleOptions
-- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.#ctor
-  name: BlazorModuleOptions()
-  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions__ctor
-  commentId: M:CG.Blazor.Plugins.Options.BlazorModuleOptions.#ctor
-  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.BlazorModuleOptions()
-  nameWithType: BlazorModuleOptions.BlazorModuleOptions()
-- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.#ctor*
-  name: BlazorModuleOptions
-  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions__ctor_
-  commentId: Overload:CG.Blazor.Plugins.Options.BlazorModuleOptions.#ctor
-  isSpec: "True"
-  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.BlazorModuleOptions
-  nameWithType: BlazorModuleOptions.BlazorModuleOptions
 - uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.AssemblyNameOrPath
   name: AssemblyNameOrPath
   href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_AssemblyNameOrPath
@@ -236,32 +223,32 @@ references:
   isSpec: "True"
   fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.EntryPoint
   nameWithType: BlazorModuleOptions.EntryPoint
-- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
-  name: IsEnabled
-  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsEnabled
-  commentId: P:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
-  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
-  nameWithType: BlazorModuleOptions.IsEnabled
-- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled*
-  name: IsEnabled
-  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsEnabled_
-  commentId: Overload:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
+- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled
+  name: IsDisabled
+  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsDisabled
+  commentId: P:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled
+  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled
+  nameWithType: BlazorModuleOptions.IsDisabled
+- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled*
+  name: IsDisabled
+  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsDisabled_
+  commentId: Overload:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled
   isSpec: "True"
-  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled
-  nameWithType: BlazorModuleOptions.IsEnabled
-- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed
-  name: Routed
-  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_Routed
-  commentId: P:CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed
-  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed
-  nameWithType: BlazorModuleOptions.Routed
-- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed*
-  name: Routed
-  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_Routed_
-  commentId: Overload:CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed
+  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled
+  nameWithType: BlazorModuleOptions.IsDisabled
+- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted
+  name: IsRouted
+  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsRouted
+  commentId: P:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted
+  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted
+  nameWithType: BlazorModuleOptions.IsRouted
+- uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted*
+  name: IsRouted
+  href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_IsRouted_
+  commentId: Overload:CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted
   isSpec: "True"
-  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed
-  nameWithType: BlazorModuleOptions.Routed
+  fullName: CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted
+  nameWithType: BlazorModuleOptions.IsRouted
 - uid: CG.Blazor.Plugins.Options.BlazorModuleOptions.Scripts
   name: Scripts
   href: api/CG.Blazor.Plugins.Options.BlazorModuleOptions.html#CG_Blazor_Plugins_Options_BlazorModuleOptions_Scripts

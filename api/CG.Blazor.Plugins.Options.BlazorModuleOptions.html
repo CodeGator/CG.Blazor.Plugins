@@ -121,18 +121,6 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class BlazorModuleOptions</code></pre>
   </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions__ctor_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.#ctor*"></a>
-  <h4 id="CG_Blazor_Plugins_Options_BlazorModuleOptions__ctor" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.#ctor">BlazorModuleOptions()</h4>
-  <div class="markdown level1 summary"><p>This constructor creates a new instance of the <a class="xref" href="CG.Blazor.Plugins.Options.BlazorModuleOptions.html">BlazorModuleOptions</a>
-class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlazorModuleOptions()</code></pre>
-  </div>
   <h3 id="properties">Properties
   </h3>
   <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions_AssemblyNameOrPath_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.AssemblyNameOrPath*"></a>
@@ -162,8 +150,8 @@ Blazor plugin assembly that corresponds to the plugin.</p>
   </table>
   <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions_EntryPoint_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.EntryPoint*"></a>
   <h4 id="CG_Blazor_Plugins_Options_BlazorModuleOptions_EntryPoint" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.EntryPoint">EntryPoint</h4>
-  <div class="markdown level1 summary"><p>This property contains the name of an options entry point for the
-plugin.</p>
+  <div class="markdown level1 summary"><p>This property contains the optional name of an options entry point
+for the plugin.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -185,14 +173,14 @@ plugin.</p>
       </tr>
     </tbody>
   </table>
-  <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions_IsEnabled_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled*"></a>
-  <h4 id="CG_Blazor_Plugins_Options_BlazorModuleOptions_IsEnabled" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.IsEnabled">IsEnabled</h4>
-  <div class="markdown level1 summary"><p>This property indicates whether the plugin is enabled for loading, or not.</p>
+  <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions_IsDisabled_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled*"></a>
+  <h4 id="CG_Blazor_Plugins_Options_BlazorModuleOptions_IsDisabled" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.IsDisabled">IsDisabled</h4>
+  <div class="markdown level1 summary"><p>This property indicates whether the plugin is disabled, or not.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsEnabled { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsDisabled { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,15 +197,15 @@ plugin.</p>
       </tr>
     </tbody>
   </table>
-  <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions_Routed_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed*"></a>
-  <h4 id="CG_Blazor_Plugins_Options_BlazorModuleOptions_Routed" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.Routed">Routed</h4>
+  <a id="CG_Blazor_Plugins_Options_BlazorModuleOptions_IsRouted_" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted*"></a>
+  <h4 id="CG_Blazor_Plugins_Options_BlazorModuleOptions_IsRouted" data-uid="CG.Blazor.Plugins.Options.BlazorModuleOptions.IsRouted">IsRouted</h4>
   <div class="markdown level1 summary"><p>This property indicates that the plugin requires routing support,
 from Blazor, at runtime.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Routed { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsRouted { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -242,7 +230,7 @@ that should be injected into the HTML head section, at runtime.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IList&lt;string&gt; Scripts { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Scripts { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -254,7 +242,7 @@ that should be injected into the HTML head section, at runtime.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -267,7 +255,7 @@ that should be injected into the HTML head section, at runtime.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IList&lt;string&gt; StyleSheets { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; StyleSheets { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -279,7 +267,7 @@ that should be injected into the HTML head section, at runtime.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
