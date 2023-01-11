@@ -78,7 +78,7 @@ public static class WebApplicationBuilderExtensions
             );
 
         // Log what we are about to do.
-        bootstrapLogger?.LogInformation(
+        bootstrapLogger?.LogDebug(
             "Looping through {count} enabled plugin modules, " +
             "for the plugin loader",
             modules.Count()
@@ -138,7 +138,7 @@ public static class WebApplicationBuilderExtensions
                         );
 
                     // Log what we are about to do.
-                    bootstrapLogger?.LogInformation(
+                    bootstrapLogger?.LogDebug(
                         "Loading assembly by path: {path}, for the plugin " +
                         "loader",
                         completePath
@@ -154,7 +154,7 @@ public static class WebApplicationBuilderExtensions
                     try
                     {
                         // Log what we are about to do.
-                        bootstrapLogger?.LogInformation(
+                        bootstrapLogger?.LogDebug(
                             "Loading assembly by name: {name}, for the " +
                             "plugin loader",
                             module.AssemblyNameOrPath
@@ -183,7 +183,7 @@ public static class WebApplicationBuilderExtensions
                 try
                 {
                     // Log what we are about to do.
-                    bootstrapLogger?.LogInformation(
+                    bootstrapLogger?.LogDebug(
                         "Loading assembly by name: {name}, for the plugin " +
                         "loader",
                         module.AssemblyNameOrPath
@@ -243,7 +243,7 @@ public static class WebApplicationBuilderExtensions
             if (module.IsRouted)
             {
                 // Log what we are about to do.
-                bootstrapLogger?.LogInformation(
+                bootstrapLogger?.LogDebug(
                     "Marking the assembly for routing support, for the " +
                     "plugin loader"
                     );
@@ -293,7 +293,7 @@ public static class WebApplicationBuilderExtensions
             if (false == string.IsNullOrEmpty(module.EntryPoint))
             {
                 // Log what we are about to do.
-                bootstrapLogger?.LogInformation(
+                bootstrapLogger?.LogDebug(
                     "Resolved custom entry point: {name}, for the " +
                     "plugin loader",
                     module.EntryPoint
@@ -325,7 +325,7 @@ public static class WebApplicationBuilderExtensions
                 try
                 {
                     // Log what we are about to do.
-                    bootstrapLogger?.LogInformation(
+                    bootstrapLogger?.LogDebug(
                         "Creating module instance for plugin: '{name}', for the " +
                         "plugin loader",
                         module.AssemblyNameOrPath
@@ -350,7 +350,7 @@ public static class WebApplicationBuilderExtensions
                             );
 
                         // Log what we are about to do.
-                        bootstrapLogger?.LogInformation(
+                        bootstrapLogger?.LogDebug(
                             "Configuring plugin: '{name}', for the plugin loader",
                             module.AssemblyNameOrPath
                             );
@@ -387,7 +387,7 @@ public static class WebApplicationBuilderExtensions
             else
             {
                 // Log what we are about to do.
-                bootstrapLogger?.LogInformation(
+                bootstrapLogger?.LogDebug(
                     "Resolving standard entry point: {name}, for the plugin loader",
                     $"{asm.GetName().Name}.Module"
                     );
@@ -408,7 +408,7 @@ public static class WebApplicationBuilderExtensions
                     try
                     {
                         // Log what we are about to do.
-                        bootstrapLogger?.LogInformation(
+                        bootstrapLogger?.LogDebug(
                             "Creating module instance for plugin: '{name}', for the " +
                             "plugin loader",
                             module.AssemblyNameOrPath
@@ -433,7 +433,7 @@ public static class WebApplicationBuilderExtensions
                                 );
 
                             // Log what we are about to do.
-                            bootstrapLogger?.LogInformation(
+                            bootstrapLogger?.LogDebug(
                                 "Configuring plugin: '{name}', for the plugin loader",
                                 module.AssemblyNameOrPath
                                 );
