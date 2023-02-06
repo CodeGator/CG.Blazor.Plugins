@@ -56,6 +56,11 @@ public static class WebApplicationExtensions
 
         var asmNameSet = new HashSet<string>();
 
+        // Get the plugin options.
+        var options = webApplication.Services.GetRequiredService<
+            IOptions<BlazorPluginsOptions>
+            >();
+
         // Log what we are about to do.
         webApplication.Logger.LogDebug(
             "Building style sheet support for the plugin loader."
@@ -63,6 +68,7 @@ public static class WebApplicationExtensions
 
         // Add providers for any embedded style sheets.
         BuildStyleSheetProviders(
+            options,
             asmNameSet,
             allProviders,
             webApplication.Logger
@@ -75,6 +81,7 @@ public static class WebApplicationExtensions
 
         // Add providers for any embedded scripts.
         BuildScriptProviders(
+            options,
             asmNameSet,
             allProviders,
             webApplication.Logger
@@ -83,12 +90,7 @@ public static class WebApplicationExtensions
         // Log what we are about to do.
         webApplication.Logger.LogDebug(
             "Fetching the plugin options for the plugin loader."
-            );
-
-        // Get the plugin options.
-        var options = webApplication.Services.GetRequiredService<
-            IOptions<BlazorPluginsOptions>
-            >();
+            );     
 
         // Log what we are about to do.
         webApplication.Logger.LogDebug(
@@ -181,12 +183,14 @@ public static class WebApplicationExtensions
     /// <paramref name="allProviders"/> collection, to read the static 
     /// resource at runtime.
     /// </summary>
+    /// <param name="options">Plugin configuration</param>
     /// <param name="asmNameSet">The set of all previously processed plugin
     /// assemblies.</param>
     /// <param name="allProviders">The list of all previously added file
     /// providers.</param>
     /// <param name="logger">The logger to use for the operation.</param>
     private static void BuildScriptProviders(
+        IOptions<BlazorPluginsOptions> options,
         HashSet<string> asmNameSet,
         List<IFileProvider> allProviders,
         ILogger logger
@@ -259,10 +263,21 @@ public static class WebApplicationExtensions
                     "Fetching assembly reference, for the plugin loader."
                     );
 
-                // Get the assembly reference.
-                asm = Assembly.Load(
-                    new AssemblyName(asmName)
-                    );
+                foreach (var module in options.Value.Modules)
+                {
+                    if (module.AssemblyNameOrPath.Contains(asmName))
+                    {
+                        if (module.AssemblyNameOrPath.EndsWith(".dll", true, null))
+                        {
+                            var completePath = Path.GetFullPath(module.AssemblyNameOrPath);
+                            asm = Assembly.LoadFile(completePath);
+                        }
+                        else
+                            asm = Assembly.Load(new AssemblyName(asmName));
+
+                        break;
+                    }
+                }
             }
             catch (FileNotFoundException ex)
             {
@@ -306,12 +321,14 @@ public static class WebApplicationExtensions
     /// <paramref name="allProviders"/> collection, to read the static 
     /// resource at runtime.
     /// </summary>
+    /// <param name="options">Plugin configuration</param>
     /// <param name="asmNameSet">The set of all previously processed plugin
     /// assemblies.</param>
     /// <param name="allProviders">The list of all previously added file
     /// providers.</param>
     /// <param name="logger">The logger to use for the operation.</param>
     private static void BuildStyleSheetProviders(
+        IOptions<BlazorPluginsOptions> options,
         HashSet<string> asmNameSet,
         List<IFileProvider> allProviders,
         ILogger logger
@@ -384,10 +401,21 @@ public static class WebApplicationExtensions
                     "Fetching assembly reference, for the plugin loader."
                     );
 
-                // Get the assembly reference.
-                asm = Assembly.Load(
-                    new AssemblyName(asmName)
-                    );
+                foreach (var module in options.Value.Modules)
+                {
+                    if (module.AssemblyNameOrPath.Contains(asmName))
+                    {
+                        if (module.AssemblyNameOrPath.EndsWith(".dll", true, null))
+                        {
+                            var completePath = Path.GetFullPath(module.AssemblyNameOrPath);
+                            asm = Assembly.LoadFile(completePath);
+                        }
+                        else
+                            asm = Assembly.Load(new AssemblyName(asmName));
+
+                        break;
+                    }
+                }
             }
             catch (FileNotFoundException ex)
             {
@@ -473,7 +501,7 @@ public static class WebApplicationExtensions
             }
 
             // Is this module configured with a path?
-            if (module.AssemblyNameOrPath.EndsWith(".dll"))
+            if (module.AssemblyNameOrPath.EndsWith(".dll", true, null))
             {
                 // Strip out just the assembly file name.
                 var fileName = Path.GetFileNameWithoutExtension(
@@ -487,7 +515,7 @@ public static class WebApplicationExtensions
                 }
 
                 // Check for relative paths.
-                if (false == Path.IsPathRooted(module.AssemblyNameOrPath))
+                if (false == Path.IsPathRooted(module.AssemblyNameOrPath) || Path.IsPathFullyQualified(module.AssemblyNameOrPath))
                 {
                     // Log what we are about to do.
                     logger.LogDebug(

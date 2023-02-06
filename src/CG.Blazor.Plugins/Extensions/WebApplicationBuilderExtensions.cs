@@ -1,4 +1,6 @@
 ﻿
+using System.IO;
+
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
@@ -115,68 +117,54 @@ public static class WebApplicationBuilderExtensions
 
             // If the AssemblyNameOrPath ends with a .dll then we'll assume the
             //   property contains a path and treat it as such.
-            if (module.AssemblyNameOrPath.EndsWith(".dll"))
+            if (module.AssemblyNameOrPath.EndsWith(".dll", true, null))
             {
-                // Log what we are about to do.
-                bootstrapLogger?.LogDebug(
+                try
+                {
+                    // Log what we are about to do.
+                    bootstrapLogger?.LogDebug(
                     "Deciding whether the assembly path is rooted, or " +
                     "not, for the plugin loader."
                     );
 
-                // Check for relative paths.
-                if (false == Path.IsPathRooted(module.AssemblyNameOrPath))
-                {
-                    // Log what we are about to do.
-                    bootstrapLogger?.LogDebug(
-                        "Building a complete path to a plugin assembly, " +
-                        "for the plugin loader"
-                        );
-
-                    // Expand the path (the load expects a rooted path).
-                    var completePath = Path.GetFullPath(
-                        module.AssemblyNameOrPath
-                        );
-
-                    // Log what we are about to do.
-                    bootstrapLogger?.LogDebug(
-                        "Loading assembly by path: {path}, for the plugin " +
-                        "loader",
-                        completePath
-                        );
-
-                    // Load the assembly from the path.
-                    asm = Assembly.LoadFile(
-                        completePath
-                        );
-                }
-                else
-                {
-                    try
+                    // Check for relative paths.
+                    if (false == Path.IsPathRooted(module.AssemblyNameOrPath) || Path.IsPathFullyQualified(module.AssemblyNameOrPath))
                     {
                         // Log what we are about to do.
                         bootstrapLogger?.LogDebug(
-                            "Loading assembly by name: {name}, for the " +
-                            "plugin loader",
+                            "Building a complete path to a plugin assembly, " +
+                            "for the plugin loader"
+                            );
+
+                        // Expand the path (the load expects a rooted path).
+                        var completePath = Path.GetFullPath(
                             module.AssemblyNameOrPath
                             );
 
-                        // Load the assembly from the path.
-                        asm = Assembly.Load(
-                            new AssemblyName(module.AssemblyNameOrPath)
+                        // Log what we are about to do.
+                        bootstrapLogger?.LogDebug(
+                            "Loading assembly by path: {path}, for the plugin " +
+                            "loader",
+                            completePath
                             );
-                    }
-                    catch (FileNotFoundException ex)
-                    {
-                        // Provide better context for the error.
-                        throw new BlazorPluginException(
-                            innerException: ex,
-                            message: "When loading from an assembly name, remember that the " +
-                            "assembly itself must have been loaded through a project reference. " +
-                            "To dynamically load a plugin assembly, use a path to the assembly, " +
-                            "instead of a name."
+
+                        // Load the assembly from the path.
+                        asm = Assembly.LoadFile(
+                            completePath
                             );
                     }
                 }
+                catch (FileNotFoundException ex)
+                {
+                    // Provide better context for the error.
+                    throw new BlazorPluginException(
+                        innerException: ex,
+                        message: "When loading from an assembly name, remember that the " +
+                        "assembly itself must have been loaded through a project reference. " +
+                        "To dynamically load a plugin assembly, use a path to the assembly, " +
+                        "instead of a name."
+                        );
+                }           
             }
             else
             {
